@@ -1,0 +1,27 @@
+﻿@model List<HealthCareMonitoringAPP.Models.Order>
+
+@{
+    ViewData["Title"] = "All Orders";
+}
+
+<h2>All Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</td> <!-- Format OrderDate to a readable string -->
+                <td>@string.Format("R{0:N2}", order.TotalPrice)</td> <!-- Format TotalPrice as ZAR (R) -->
+            </tr>
+        }
+    </tbody>
+</table>

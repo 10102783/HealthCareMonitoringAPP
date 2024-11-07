@@ -1,0 +1,17 @@
+﻿@model HealthCareMonitoringAPP.Models.Product
+
+<h2>Are you sure you want to delete this product?</h2>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p>Price: @string.Format("R{0:N2}", Model.Price)</p>
+    <p>Description: @Model.Description</p>
+    <p>Category: @Model.Category</p>
+    <p>Dosage: @Model.Dosage</p>
+    <p>Manufacturer: @Model.Manufacturer</p>
+</div>
+
+<form method="post">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form>

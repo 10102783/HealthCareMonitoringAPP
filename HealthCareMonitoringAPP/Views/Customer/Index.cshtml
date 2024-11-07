@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HealthCareMonitoringAPP.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customer List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Emergency Contact Name</th>
+            <th>Emergency Contact Phone</th>
+            <th>Emergency Contact Relation</th>
+            <th>Insurance Provider</th>
+            <th>Insurance Policy Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+                <td>@customer.PhoneNumber</td>
+                <td>@customer.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                <td>@customer.Gender</td>
+                <td>@customer.EmergencyContactName</td>
+                <td>@customer.EmergencyContactPhone</td>
+                <td>@customer.EmergencyContactRelation</td>
+                <td>@customer.InsuranceProvider</td>
+                <td>@customer.InsurancePolicyNumber</td>
+                <td>
+                    <a href="@Url.Action("Details", "Customer", new { id = customer.CustomerId })">Details</a> |
+                    <a href="@Url.Action("Edit", "Customer", new { id = customer.CustomerId })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Customer", new { id = customer.CustomerId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Customer")" class="btn btn-primary">Create New Customer</a>

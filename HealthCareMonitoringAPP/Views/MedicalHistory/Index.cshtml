@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HealthCareMonitoringAPP.Models.MedicalHistory>
+
+@{
+    ViewData["Title"] = "Medical Histories";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- Add a button to navigate to the Create page -->
+<a href="@Url.Action("Create", "MedicalHistory")" class="btn btn-primary mb-3">Create New Medical History</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Diagnosis</th>
+            <th>Treatment</th>
+            <th>Date of Diagnosis</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medicalHistory in Model)
+        {
+            <tr>
+                <td>@medicalHistory.Diagnosis</td>
+                <td>@medicalHistory.Treatment</td>
+                <td>@medicalHistory.DateOfDiagnosis.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = medicalHistory.MedicalHistoryId })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = medicalHistory.MedicalHistoryId })" class="btn btn-danger">Delete</a>
+                   
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

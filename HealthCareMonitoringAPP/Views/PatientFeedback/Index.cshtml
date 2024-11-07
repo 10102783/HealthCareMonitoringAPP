@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HealthCareMonitoringAPP.Models.PatientFeedback>
+
+<h1>Patient Feedback</h1>
+
+<a href="@Url.Action("Create", "PatientFeedback")" class="btn btn-primary mb-3">Add New Feedback</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Feedback</th>
+            <th>Rating</th>
+            <th>Date Submitted</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.Customer.Name</td>
+                <td>@feedback.Feedback</td>
+                <td>@feedback.Rating</td>
+                <td>@feedback.DateSubmitted.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = feedback.PatientFeedbackId })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = feedback.PatientFeedbackId })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

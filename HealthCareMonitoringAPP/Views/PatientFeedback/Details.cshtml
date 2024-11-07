@@ -1,0 +1,30 @@
+﻿@model HealthCareMonitoringAPP.Models.PatientFeedback
+
+<h1>Feedback Details</h1>
+
+<div class="form-group">
+    <label>Patient</label>
+    <p>@Model.Customer.Name</p>
+</div>
+
+<div class="form-group">
+    <label>Feedback</label>
+    <p>@Model.Feedback</p>
+</div>
+
+<div class="form-group">
+    <label>Rating</label>
+    <p>@Model.Rating</p>
+</div>
+
+<div class="form-group">
+    <label>Date Submitted</label>
+    <p>@Model.DateSubmitted.ToString("MM/dd/yyyy")</p>
+</div>
+
+<div class="form-group">
+    <label>Additional Notes</label>
+    <p>@Model.Notes</p>
+</div>
+
+<a href="@Url.Action("Index", "PatientFeedback")" class="btn btn-secondary">Back to Feedback List</a>

@@ -1,0 +1,21 @@
+﻿@model HealthCareMonitoringAPP.Models.VitalSign
+
+@{
+    ViewData["Title"] = "Delete Vital Sign";
+}
+
+<h1>Are you sure you want to delete this vital sign?</h1>
+
+<div>
+    <h3>Customer: @Model.Customer.Name</h3>
+    <p><strong>Temperature:</strong> @Model.Temperature</p>
+    <p><strong>Blood Pressure:</strong> @Model.BloodPressureSystolic / @Model.BloodPressureDiastolic</p>
+    <p><strong>Heart Rate:</strong> @Model.HeartRate</p>
+    <p><strong>Recorded At:</strong> @Model.RecordedAt.ToString("MM/dd/yyyy HH:mm")</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="VitalSignId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form>

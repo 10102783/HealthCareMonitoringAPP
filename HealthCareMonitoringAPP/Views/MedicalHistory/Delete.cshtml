@@ -1,0 +1,22 @@
+﻿@model HealthCareMonitoringAPP.Models.MedicalHistory
+
+@{
+    ViewData["Title"] = "Delete Medical History";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete this medical history record?</h3>
+
+<div>
+    <h4>Diagnosis: @Model.Diagnosis</h4>
+    <p><strong>Treatment:</strong> @Model.Treatment</p>
+    <p><strong>Notes:</strong> @Model.Notes</p>
+    <p><strong>Date of Diagnosis:</strong> @Model.DateOfDiagnosis.ToString("MM/dd/yyyy")</p>
+</div>
+
+<form method="post" asp-action="DeleteConfirmed">
+    <input type="hidden" name="id" value="@Model.MedicalHistoryId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "MedicalHistories")" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,28 @@
+﻿@model HealthCareMonitoringAPP.Models.MedicalHistory
+
+@{
+    ViewData["Title"] = "Medical History Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>Diagnosis</h3>
+    <p>@Model.Diagnosis</p>
+</div>
+<div>
+    <h3>Treatment</h3>
+    <p>@Model.Treatment</p>
+</div>
+<div>
+    <h3>Notes</h3>
+    <p>@Model.Notes</p>
+</div>
+<div>
+    <h3>Date of Diagnosis</h3>
+    <p>@Model.DateOfDiagnosis.ToString("MM/dd/yyyy")</p>
+</div>
+
+<p>
+    <a href="@Url.Action("Index", "MedicalHistories")" class="btn btn-primary">Back to List</a>
+</p>

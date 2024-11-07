@@ -1,0 +1,26 @@
+﻿@model IEnumerable<HealthCareMonitoringAPP.Models.Product>
+
+<h2>Products</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Product</a>
+</p>
+
+<ul class="list-group">
+    @foreach (var product in Model)
+    {
+        <li class="list-group-item">
+            <h5>@product.Name - @string.Format("R{0:N2}", product.Price)</h5>
+            <p>@product.Description</p>
+            <p>Category: @product.Category</p>
+            <p>Dosage: @product.Dosage</p>
+            <p>Manufacturer: @product.Manufacturer</p>
+            <p>
+                <a asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-info">View Details</a>
+                <a asp-action="Edit" asp-route-id="@product.ProductId" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@product.ProductId" class="btn btn-danger">Delete</a>
+            </p>
+        </li>
+    }
+</ul>
+

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HealthCareMonitoringAPP.Models.VitalSign>
+
+@{
+    ViewData["Title"] = "Vital Signs";
+}
+
+<h1>Vital Signs</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Add New Vital Sign</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Temperature</th>
+            <th>Blood Pressure (Systolic/Diastolic)</th>
+            <th>Heart Rate</th>
+            <th>Recorded At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vitalSign in Model)
+        {
+            <tr>
+                <td>@vitalSign.Customer.Name</td>
+                <td>@vitalSign.Temperature</td>
+                <td>@vitalSign.BloodPressureSystolic / @vitalSign.BloodPressureDiastolic</td>
+                <td>@vitalSign.HeartRate</td>
+                <td>@vitalSign.RecordedAt.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = vitalSign.VitalSignId })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Edit", new { id = vitalSign.VitalSignId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = vitalSign.VitalSignId })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

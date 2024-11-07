@@ -1,0 +1,17 @@
+﻿@model HealthCareMonitoringAPP.Models.VitalSign
+
+@{
+    ViewData["Title"] = "Vital Sign Details";
+}
+
+<h1>Vital Sign Details</h1>
+
+<div>
+    <h3>Customer: @Model.Customer.Name</h3>
+    <p><strong>Temperature:</strong> @Model.Temperature</p>
+    <p><strong>Blood Pressure:</strong> @Model.BloodPressureSystolic / @Model.BloodPressureDiastolic</p>
+    <p><strong>Heart Rate:</strong> @Model.HeartRate</p>
+    <p><strong>Recorded At:</strong> @Model.RecordedAt.ToString("MM/dd/yyyy HH:mm")</p>
+</div>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

@@ -1,0 +1,51 @@
+﻿@model HealthCareMonitoringAPP.Models.VitalSign
+
+@{
+    ViewData["Title"] = "Create Vital Sign";
+}
+
+<h1>Create Vital Sign</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CustomerId" class="control-label"></label>
+        <select asp-for="CustomerId" class="form-control" asp-items="@(ViewBag.Customers)">
+            <option value="">-- Select Customer --</option>
+        </select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Temperature" class="control-label"></label>
+        <input asp-for="Temperature" class="form-control" />
+        <span asp-validation-for="Temperature" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BloodPressureSystolic" class="control-label"></label>
+        <input asp-for="BloodPressureSystolic" class="form-control" />
+        <span asp-validation-for="BloodPressureSystolic" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BloodPressureDiastolic" class="control-label"></label>
+        <input asp-for="BloodPressureDiastolic" class="form-control" />
+        <span asp-validation-for="BloodPressureDiastolic" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HeartRate" class="control-label"></label>
+        <input asp-for="HeartRate" class="form-control" />
+        <span asp-validation-for="HeartRate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RecordedAt" class="control-label"></label>
+        <input asp-for="RecordedAt" class="form-control" type="datetime-local" />
+        <span asp-validation-for="RecordedAt" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

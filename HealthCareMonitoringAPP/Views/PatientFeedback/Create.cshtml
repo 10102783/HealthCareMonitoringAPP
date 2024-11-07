@@ -1,0 +1,27 @@
+﻿@model HealthCareMonitoringAPP.Models.PatientFeedback
+
+<h1>Provide Feedback</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="CustomerId">Patient</label>
+        <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.Customers"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="Feedback">Feedback</label>
+        <textarea asp-for="Feedback" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Rating">Rating (1-5)</label>
+        <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+    </div>
+
+    <div class="form-group">
+        <label for="Notes">Additional Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+</form>

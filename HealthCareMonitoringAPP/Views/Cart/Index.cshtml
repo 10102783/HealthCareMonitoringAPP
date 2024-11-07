@@ -1,0 +1,54 @@
+﻿@model List<HealthCareMonitoringAPP.Models.CartItem>
+
+<h2>Your Cart</h2>
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@string.Format("R{0:N2}", item.Price)</td> <!-- Format price as ZAR (R) -->
+                    <td>
+                        <form asp-action="UpdateQuantity" method="post" style="display:inline;">
+                            <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control" style="width: 60px; display: inline;" />
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-info btn-sm">Update</button>
+                        </form>
+                    </td>
+                    <td>@string.Format("R{0:N2}", item.Quantity * item.Price)</td> <!-- Calculate Total dynamically -->
+                    <td>
+                        <form asp-action="RemoveFromCart" method="post" style="display:inline;">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                        <form asp-action="PurchaseItem" method="post" style="display:inline;">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-primary btn-sm">Purchase</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
+                <td>@string.Format("R{0:N2}", Model.Sum(item => item.Quantity * item.Price))</td> <!-- Format grand total as ZAR (R) -->
+            </tr>
+        </tfoot>
+    </table>
+}

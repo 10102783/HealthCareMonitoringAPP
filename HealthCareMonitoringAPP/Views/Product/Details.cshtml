@@ -1,0 +1,17 @@
+﻿@model HealthCareMonitoringAPP.Models.Product
+
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+<p>Price: @string.Format("R{0:N2}", Model.Price)</p>
+<p>Stock: @Model.Stock</p>
+<p>Category: @Model.Category</p>
+<p>Dosage: @Model.Dosage</p>
+<p>Manufacturer: @Model.Manufacturer</p>
+
+<form asp-action="AddToCart" asp-controller="Cart" method="post">
+    <input type="hidden" name="productId" value="@Model.ProductId" />
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 70px;" />
+    <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
+</form>
+
